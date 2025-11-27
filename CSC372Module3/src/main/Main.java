@@ -72,27 +72,22 @@ public class Main {
     		}
     	});
     	
+    	btn3.addActionListener(e -> {
+    		Color greenBack = greenRandom();
+    		panel.setBackground(greenBack);
+    		
+    		btn3.setText("Color: " + String.format("#%02X%02X%02X", greenBack.getRed(), greenBack.getGreen(), greenBack.getBlue()));
+    	});
     	
     	
     	
     	
-    	
-    	
-    	
-    	
-    	
-//        SwingUtilities.invokeLater(() -> {
-//            JFrame frame = new JFrame("Layout Manager Example");
-//            JPanel panel = new JPanel(new FlowLayout());
-//
-//            panel.add(new JButton("Button 1"));
-//            panel.add(new JButton("Button 2"));
-//            panel.add(new JButton("Button 3"));
-//
-//            frame.add(panel);
-//            frame.setSize(300, 100);
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.setVisible(true);
-//        });
     }
+    	private static Color greenRandom() {
+    		int red = (int)(Math.random() * 100);
+    		int green = 150 + (int)(Math.random() * 106);
+    		int blue = (int)(Math.random() * 100);
+    		
+    		return new Color(red, green, blue);
+    	}
 }

@@ -37,6 +37,7 @@ public class Main {
     	dateField.setEditable(false);
     	
     	JPanel dateDisplay = new JPanel(new BorderLayout(5, 5));
+    	dateDisplay.setVisible(false);
     	dateDisplay.add(dateLabel, BorderLayout.WEST);
     	dateDisplay.add(dateField, BorderLayout.CENTER);
     	
@@ -47,12 +48,23 @@ public class Main {
     	frame.add(panel);
     	frame.setVisible(true);
     	
-    	LocalDateTime currentTime = LocalDateTime.now();
-    	
     	DateTimeFormatter dateFormat = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-    	String dateTime = currentTime.format(dateFormat);
     	
-    	System.out.println("Current date is: " + dateTime);
+    	btn.addActionListener(e -> {
+    		LocalDateTime currentTime = LocalDateTime.now();
+    		String dateTime = currentTime.format(dateFormat);
+    		
+    		dateField.setText(dateTime);
+    		dateDisplay.setVisible(true);
+    		frame.revalidate();
+    		frame.repaint();
+    	});
+    	
+    	
+    	
+    	
+    	
+    	
     	
     	
 //        SwingUtilities.invokeLater(() -> {

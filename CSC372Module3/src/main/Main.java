@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.*;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,6 +61,18 @@ public class Main {
     		frame.revalidate();
     		frame.repaint();
     	});
+    	
+    	btn2.addActionListener(e -> {
+    		try (FileWriter writer = new FileWriter("log.txt")) {
+    			writer.write(dateField.getText());
+    			System.out.println("Saving to: " + new java.io.File("log.txt").getAbsolutePath());
+    			JOptionPane.showMessageDialog(frame, "Saved to log.txt");
+    		} catch (IOException ex) {
+    			JOptionPane.showMessageDialog(frame, "Error: " + ex.getMessage());
+    		}
+    	});
+    	
+    	
     	
     	
     	

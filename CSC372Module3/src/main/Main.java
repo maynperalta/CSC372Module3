@@ -9,29 +9,40 @@ public class Main {
     public static void main(String[] args) {
     	JFrame frame = new JFrame("User Interface");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.setSize(350, 125);
+    	frame.setSize(425, 150);
     	
     	JToolBar topBar = new JToolBar();
     	
     	JButton btn = new JButton("Date and Time");
-    	JButton btn2 = new JButton("Save Note");
+    	JButton btn2 = new JButton("Save Timestamp");
     	JButton btn3 = new JButton("Background Color");
     	JButton btn4 = new JButton("Exit");
     	
     	
     	topBar.add(btn);
+    	topBar.addSeparator();
     	topBar.add(btn2);
+    	topBar.addSeparator();
     	topBar.add(btn3);
+    	topBar.addSeparator();
     	topBar.add(btn4);
     	
-    	JPanel panel = new JPanel();
-    	panel.setLayout(new BorderLayout(5, 5));
+    	JPanel panel = new JPanel(new BorderLayout(5, 5));
     	panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     	panel.add(topBar, BorderLayout.NORTH);
     	
-    	TextField dateField = new TextField();
+    	JLabel dateLabel = new JLabel("Current Date and Time: ");
     	
-    	panel.add(dateField, BorderLayout.SOUTH);
+    	JTextField dateField = new JTextField();
+    	dateField.setEditable(false);
+    	
+    	JPanel dateDisplay = new JPanel(new BorderLayout(5, 5));
+    	dateDisplay.add(dateLabel, BorderLayout.WEST);
+    	dateDisplay.add(dateField, BorderLayout.CENTER);
+    	
+    	dateDisplay.setVisible(true);
+    	
+    	panel.add(dateDisplay, BorderLayout.SOUTH);
     	
     	frame.add(panel);
     	frame.setVisible(true);

@@ -11,23 +11,21 @@ public class Main {
     public static void main(String[] args) {
     	JFrame frame = new JFrame("User Interface");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.setMinimumSize(new Dimension(250, 50));
+    	frame.setMinimumSize(new Dimension(350, 150));
     	
     	JMenuBar topBar = new JMenuBar();
     	JMenu menu = new JMenu("Menu");
 // Buttons for Top Bar 	
-    	JMenuItem btn = new JMenuItem("Date and Time");
-    	JMenuItem btn2 = new JMenuItem("Save Timestamp");
-    	JMenuItem btn3 = new JMenuItem("Background Color");
-    	JMenuItem btn4 = new JMenuItem("Exit");
-// Add buttons to top bar with separator for spacing    	
-    	menu.add(btn);
+    	JMenuItem item1 = new JMenuItem("Date and Time");
+    	JMenuItem item2 = new JMenuItem("Save Timestamp");
+    	JMenuItem item3 = new JMenuItem("Background Color");
+    	JMenuItem item4 = new JMenuItem("Exit");
+// Add buttons to top bar with separator for exit item spacing   	
+    	menu.add(item1);
+    	menu.add(item2);
+    	menu.add(item3);
     	menu.addSeparator();
-    	menu.add(btn2);
-    	menu.addSeparator();
-    	menu.add(btn3);
-    	menu.addSeparator();
-    	menu.add(btn4);
+    	menu.add(item4);
     	
     	topBar.add(menu);
     	frame.setJMenuBar(topBar);
@@ -36,7 +34,7 @@ public class Main {
     	panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 // Label and text box to hold date and time. 	
     	JLabel dateLabel = new JLabel("Current Date and Time: ");   	
-    	JTextField dateField = new JTextField();
+    	JTextField dateField = new JTextField(25);
     	dateField.setEditable(false);
 // Panel to hold date and time items    	
     	JPanel dateDisplay = new JPanel(new BorderLayout(5, 5));
@@ -53,7 +51,7 @@ public class Main {
 // Format date and time     	
     	DateTimeFormatter dateFormat = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
 // Generate current time upon button click   	
-    	btn.addActionListener(e -> {
+    	item1.addActionListener(e -> {
     		LocalDateTime currentTime = LocalDateTime.now();
     		String dateTime = currentTime.format(dateFormat);
 // Display timestamp when button is clicked   		
@@ -63,7 +61,7 @@ public class Main {
     		frame.setLocationRelativeTo(null);
     	});
 // Write text field to text file and show path in console    	
-    	btn2.addActionListener(e -> {
+    	item2.addActionListener(e -> {
     		try (FileWriter writer = new FileWriter("log.txt")) {
     			writer.write(dateField.getText());
     			System.out.println("Saving to: " + new java.io.File("log.txt").getAbsolutePath());
@@ -73,14 +71,14 @@ public class Main {
     		}
     	});
 // Change background of frame to green color when pressed    	
-    	btn3.addActionListener(e -> {
+    	item3.addActionListener(e -> {
     		Color greenBack = greenRandom();
     		panel.setBackground(greenBack);
 // Display green hex code   		
-    		btn3.setText("Color: " + String.format("#%02X%02X%02X", greenBack.getRed(), greenBack.getGreen(), greenBack.getBlue()));
+    		item3.setText("Color: " + String.format("#%02X%02X%02X", greenBack.getRed(), greenBack.getGreen(), greenBack.getBlue()));
     	});	
 // Exit Java program   	
-    	btn4.addActionListener(e -> System.exit(0));
+    	item4.addActionListener(e -> System.exit(0));
     }
 // Generate random green color    
     	private static Color greenRandom() {

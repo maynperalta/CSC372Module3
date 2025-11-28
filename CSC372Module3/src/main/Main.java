@@ -20,7 +20,6 @@ public class Main {
     	JButton btn3 = new JButton("Background Color");
     	JButton btn4 = new JButton("Exit");
     	
-    	
     	topBar.add(btn);
     	topBar.addSeparator();
     	topBar.add(btn2);
@@ -77,12 +76,11 @@ public class Main {
     		panel.setBackground(greenBack);
     		
     		btn3.setText("Color: " + String.format("#%02X%02X%02X", greenBack.getRed(), greenBack.getGreen(), greenBack.getBlue()));
-    	});
+    	});	
     	
-    	
-    	
-    	
+    	btn4.addActionListener(e -> System.exit(0));
     }
+    
     	private static Color greenRandom() {
     		int red = (int)(Math.random() * 100);
     		int green = 150 + (int)(Math.random() * 106);
